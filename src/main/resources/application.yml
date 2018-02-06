@@ -1,0 +1,17 @@
+spring:
+  jpa:
+   generate-ddl: true
+   properties.hibernate.dialect: org.hibernate.dialect.MySQL5Dialect
+   properties.hibernate.current_session_context_class: org.springframework.orm.hibernate5.SpringSessionContext
+   hibernate:
+     ddl-auto: update
+  datasource:
+    url: jdbc:mysql://localhost/ticketdb
+    username: root
+    password: password
+  mvc:
+    view:
+      suffix: .jsp
+      prefix: /WEB-INF/jsp
+server:
+  port: 9090

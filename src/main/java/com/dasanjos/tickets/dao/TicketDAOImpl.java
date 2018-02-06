@@ -35,8 +35,8 @@ public class TicketDAOImpl implements TicketDAO {
 				.list();
 	}
 
-	public void setSessionFactory(SessionFactory sessionFactory) {
+	/*public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
-	}
+	}*/
 
 }
