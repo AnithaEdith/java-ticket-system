@@ -1,16 +1,18 @@
 package com.dasanjos.tickets;
 
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
-import org.springframework.web.servlet.view.JstlView;
 
 @Configuration
-@EnableWebMvc
+//@EnableWebMvc
 @ComponentScan
+@EnableAutoConfiguration
 public class MvcConfiguration extends WebMvcConfigurerAdapter
 {
     @Override
@@ -20,4 +22,17 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter
         resolver.setSuffix(".jsp");
         registry.viewResolver(resolver);
     }
+
+/*
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler(
+                "/img/**"
+               )
+                .addResourceLocations(
+                        "/img/"
+                      );
+    }*/
+
+
 }

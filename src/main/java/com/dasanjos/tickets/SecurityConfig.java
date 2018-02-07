@@ -21,6 +21,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests().antMatchers("/").access("hasRole('partner')")
+                .antMatchers("/img/**").permitAll()
                 .anyRequest().fullyAuthenticated()
                 .and()
                 .httpBasic();
