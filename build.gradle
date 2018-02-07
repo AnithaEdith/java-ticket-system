@@ -1,0 +1,86 @@
+apply from: "java.gradle"
+
+buildscript {
+    ext {
+        springBootVersion = "1.4.2.RELEASE"
+        springVersion = "4.3.4.RELEASE"
+        hibernateVersion = "5.0.11.Final"
+        slf4jVersion = "1.7.21"
+        junitVersion = "4.12"
+        mysqlVersion = "5.1.40"
+    }
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:$springBootVersion"
+    }
+}
+
+apply plugin: "war"
+apply plugin: "org.springframework.boot"
+
+group = 'com.dasanjos.ticketz'
+version = '1.0-SNAPSHOT'
+
+description = """Ticketz Webapp"""
+
+tasks.withType(JavaCompile) {
+	options.encoding = 'UTF-8'
+}
+
+dependencies {
+
+    //compile "org.codehaus.groovy:groovy-json:2.4.9"
+    compile "org.springframework.boot:spring-boot-starter-data-jpa"
+    compile "org.springframework.boot:spring-boot-starter-web"
+    compile "org.springframework.boot:spring-boot-starter-security"
+    compile "org.springframework.boot:spring-boot-starter-tomcat"
+    compile "org.apache.tomcat.embed:tomcat-embed-jasper:8.5.6"
+
+    compile "mysql:mysql-connector-java:$mysqlVersion"
+
+    compile "taglibs:standard:1.1.2"
+    compile "javax.servlet:jstl:1.2"
+ //   compile "javax.servlet:servlet-api:2.5"
+    compile(group: 'org.springframework', name: 'spring-core', version:'4.3.4.RELEASE') {
+        exclude(module: 'commons-logging')
+    }
+    compile "org.springframework:spring-web:$springVersion"
+    compile "org.springframework:spring-webmvc:$springVersion"
+    compile "org.springframework:spring-expression:$springVersion"
+    compile "org.springframework:spring-aop:$springVersion"
+    compile "org.springframework:spring-beans:$springVersion"
+    compile "org.springframework:spring-context:$springVersion"
+    compile "org.springframework:spring-tx:$springVersion"
+    compile "org.springframework:spring-orm:$springVersion"
+    compile "org.springframework:spring-oxm:$springVersion"
+    compile "org.springframework:spring-jdbc:$springVersion"
+    compile "org.springframework:spring-context-support:$springVersion"
+    compile "org.hibernate:hibernate-core:$hibernateVersion"
+    compile "org.slf4j:slf4j-api:$slf4jVersion"
+    compile "commons-dbcp:commons-dbcp:1.2.2"
+
+    testCompile "junit:junit:$junitVersion"
+
+
+/*
+    compile(group: 'org.springframework', name: 'spring-core', version:'4.3.4.RELEASE') {
+exclude(module: 'commons-logging')
+    }
+    compile group: 'org.springframework', name: 'spring-expression', version:'4.3.4.RELEASE'
+    compile group: 'org.springframework', name: 'spring-beans', version:'4.3.4.RELEASE'
+    compile group: 'org.springframework', name: 'spring-aop', version:'4.3.4.RELEASE'
+    compile group: 'org.springframework', name: 'spring-context', version:'4.3.4.RELEASE'
+    compile group: 'org.springframework', name: 'spring-context-support', version:'4.3.4.RELEASE'
+    compile group: 'org.springframework', name: 'spring-tx', version:'4.3.4.RELEASE'
+    compile group: 'org.springframework', name: 'spring-jdbc', version:'4.3.4.RELEASE'
+    compile group: 'org.springframework', name: 'spring-orm', version:'4.3.4.RELEASE'
+    compile group: 'org.springframework', name: 'spring-oxm', version:'4.3.4.RELEASE'
+    compile group: 'org.springframework', name: 'spring-web', version:'4.3.4.RELEASE'
+    compile group: 'org.springframework', name: 'spring-webmvc', version:'4.3.4.RELEASE'
+    compile group: 'commons-dbcp', name: 'commons-dbcp', version:'1.2.2'
+    compile group: 'org.codehaus.groovy', name: 'groovy-json', version: '2.4.9'*/
+}

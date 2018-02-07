@@ -1,3 +1,7 @@
 applications:
-- name: java-ticket-system
-  path: target/ticketz.war
+- name: ticketz-app
+  path: build/libs/ticketz-1.0-SNAPSHOT.war
+  services:
+  - ticketz-sql
+  routes:
+     - route: ticketz-app-ae1.apps.cumuluslabs.io
